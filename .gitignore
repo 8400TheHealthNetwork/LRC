@@ -1,0 +1,14 @@
+.vscode
+.DS_Store
+Thumbs.db
+/fsh-generated
+/input-cache
+/output
+/temp
+/template
+<IGName>/fsh-generated
+<IGName>/input-cache
+<IGName>/output
+<IGName>/temp
+<IGName>/template
+Files to decide on
