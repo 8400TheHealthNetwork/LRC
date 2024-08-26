@@ -5,7 +5,7 @@ on:
 
 env:
   AWS_REGION: il-central-1
-  PROJECT: <IGName>
+  PROJECT: LRC
   BUCKET: 8400-igs-prod
 
 jobs:
