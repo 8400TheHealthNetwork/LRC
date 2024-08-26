@@ -6,9 +6,9 @@ Thumbs.db
 /output
 /temp
 /template
-<IGName>/fsh-generated
-<IGName>/input-cache
-<IGName>/output
-<IGName>/temp
-<IGName>/template
+LRC/fsh-generated
+LRC/input-cache
+LRC/output
+LRC/temp
+LRC/template
 Files to decide on

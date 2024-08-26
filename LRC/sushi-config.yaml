@@ -3,14 +3,14 @@
 # │  used properties are included. For a list of all supported properties and their functions,     │
 # │  see: https://fshschool.org/docs/sushi/configuration/.                                         │
 # ╰────────────────────────────────────────────────────────────────────────────────────────────────╯
-id: il.community.fhir.r4.<IGName>
-packageId: il.community.fhir.r4.<IGName>
-canonical: http://ig.fhir-il-community.org/<IGName>
-name: <IG full Name>
-title: <IG Title>
-# description: Example Implementation Guide for getting started with SUSHI
-status: draft # draft | active | retired | unknown
-version: 1.0.0
+id: il.community.fhir.r4.LRC
+packageId: il.community.fhir.r4.LRC
+canonical: http://ig.fhir-il-community.org/LRC
+name: LabReferralCycle
+title: Hospital-Community Lab Referral Cycle
+description: הפניה לבדיקות מעבדה מביה"ח לקהילה, וקבלת התוצאות בחזרה.
+status: active # draft | active | retired | unknown
+version: 1.1.1
 fhirVersion: 4.0.1 # https://www.hl7.org/fhir/valueset-FHIR-version.html
 copyrightYear: 2024+
 releaseLabel: ci-build # ci-build | draft | qa-preview | ballot | trial-use | release | update | normative+trial-use
@@ -28,16 +28,13 @@ publisher:
 dependencies:
   il.core.fhir.r4: 
     uri: http://fhir.health.gov.il/ImplementationGuide/il.core.fhir.r4
-    version: latest
-  # fhir.outburn.co.il:
-  #   uri: http://fhir.outburn.co.il//ImplementationGuide/outburn
-  #   version: 0.5.0
+    version: 0.13.2
 
 
 #   hl7.fhir.us.mcode:
 #     id: mcode
 #     uri: http://hl7.org/fhir/us/mcode/ImplementationGuide/hl7.fhir.us.mcode
-#     version: 1.0.0
+#     version: 1.1.0
 #
 #
 # The pages property corresponds to IG.definition.page. SUSHI can
@@ -53,13 +50,24 @@ dependencies:
 #
 pages:
   index.md:
-    title: הקדמה
+    title: אודות הפרויקט
+    generation: markdown
+  data-flow.md:
+    title: DataFlow
+    generation: markdown
+  search-interactions.md:
+    generation: markdown
+  server-community.md:
+    title: Server - קהילה
+    generation: markdown
+  server-hospital.md:
+    title: Server - בית החולים
+    generation: markdown
+  client-hospital.md: 
+    title: Client - בית החולים
     generation: markdown
   profiles-and-extensions.md:
     title: פרופילים והרחבות
-    generation: markdown
-  terminology.md:
-    title: טרמינולוגיה
     generation: markdown
   examples.md:
     title: דוגמאות
@@ -73,7 +81,6 @@ pages:
 # ╭────────────────────────────────────────────menu.xml────────────────────────────────────────────╮
 # │  To use a provided input/includes/menu.xml file, delete the "menu" property below.             │
 # ╰────────────────────────────────────────────────────────────────────────────────────────────────╯
-#   יש לשים לב שסדר הטאבים באתר הוא הופכי לרשימה הבאה שכן בעברית המדריך יוצג מימין לשמאל  
 menu:
   קישורים נוספים:
     FHIR Spec: new-tab {{site.data.fhir.path}}index.html
@@ -81,38 +88,14 @@ menu:
   הורדות : downloads.html
   משאבי FHIR: 
     פרופילים והרחבות : profiles-and-extensions.html
-    טרמינולוגיה: terminology.html
     דוגמאות: examples.html
   הנחיות: 
-
-  פרויקט:
-
+    חיפושים ואינטראקציות: search-interactions.html
+    server - קהילה: server-community.html
+    server - בית החולים: server-hospital.html
+    client - בית החולים: client-hospital.html
+  Dataflow : data-flow.html
   בית: index.html
-
-#
-# The parameters property represents IG.definition.parameter. Rather
-# than a list of code/value pairs (as in the ImplementationGuide
-# resource), the code is the YAML key. If a parameter allows repeating
-# values, the value in the YAML should be a sequence/array.
-# For parameters defined by core FHIR see:
-# http://build.fhir.org/codesystem-guide-parameter-code.html
-# For parameters defined by the FHIR Tools IG see:
-# http://build.fhir.org/ig/FHIR/fhir-tools-ig/branches/master/CodeSystem-ig-parameters.html
-#
-parameters:
-  excludettl: true
-  generate: example-narratives
-  logging: tx
-#   validation: [allow-any-extensions, no-broken-links]
-#
-# ╭────────────────────────────────────────────menu.xml────────────────────────────────────────────╮
-# │ The menu property will be used to generate the input/menu.xml file. The menu is represented    │
-# │ as a simple structure where the YAML key is the menu item name and the value is the URL.       │
-# │ The IG publisher currently only supports one level deep on sub-menus. To provide a             │
-# │ custom menu.xml file, do not include this property and include a `menu.xml` file in            │
-# │ input/includes. To use a provided input/includes/menu.xml file, delete the "menu"              │
-# │ property below.                                                                                │
-# ╰────────────────────────────────────────────────────────────────────────────────────────────────╯
 
 # ╭───────────────────────────Less Common Implementation Guide Properties──────────────────────────╮
 # │  Uncomment the properties below to configure additional properties on the ImplementationGuide  │
