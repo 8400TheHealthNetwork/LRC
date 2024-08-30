@@ -92,7 +92,7 @@ jobs:
         # run genonce.sh
         chmod +x ./${{ env.PROJECT }}/_genonce.sh && \
         cd ${{ env.PROJECT }} && \
-        ./_genonce.sh
+        JAVA_OPTS="-Xmx4g" ./_genonce.sh
 
     - name: Publish Version
       run: |
