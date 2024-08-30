@@ -92,11 +92,11 @@ jobs:
         # run genonce.sh
         chmod +x ./${{ env.PROJECT }}/_genonce.sh && \
         cd ${{ env.PROJECT }} && \
-        JAVA_OPTS="-Xmx4g" ./_genonce.sh
+        JAVA_OPTS="-Xmx8g" ./_genonce.sh
 
     - name: Publish Version
       run: |
-        java -Xms512m -Xmx4g -XX:+UseG1GC -jar ./${{ env.PROJECT }}/input-cache/publisher.jar -go-publish -no-sushi -source ./${{ env.PROJECT }} -web ./webroot -registry ./ig-registry/fhir-ig-list.json -history ./ig-history -templates ./webroot/templates
+        java -Xms512m -Xmx8g -XX:+UseG1GC -jar ./${{ env.PROJECT }}/input-cache/publisher.jar -go-publish -no-sushi -source ./${{ env.PROJECT }} -web ./webroot -registry ./ig-registry/fhir-ig-list.json -history ./ig-history -templates ./webroot/templates
 
     - name: Convert project name to lowercase
       id: set-lowercase-project
